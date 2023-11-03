@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Dog and Cat Adoption</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
   <section class="hero is-primary is-bold">
@@ -23,6 +26,7 @@
           <div class="navbar-menu">
             <div class="navbar-end">
               <a class="navbar-item" href="/about">About</a>
+              <a class="navbar-item" href="/adoption">Adoption</a>
             </div>
           </div>
         </div>

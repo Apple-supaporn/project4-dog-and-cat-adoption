@@ -4,7 +4,10 @@ from django.shortcuts import render
 
 
 
-
+pets = [
+  {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
+  {'name': 'Sachi', 'breed': 'calico', 'description': 'gentle and loving', 'age': 2},
+]
 
 
 # Create your views here.
@@ -15,6 +18,5 @@ def about(request):
     return render(request, 'dogncat/about.html')  
 
 
-# def pets(request):
-#     pets = Pet.object.all()
-#     return render(request, 'pets/pets_index.html', {'pets' : pets}) 
+def adoption_index(request):
+    return render(request, 'dogncat/index.html', {'pets' : pets}) 
