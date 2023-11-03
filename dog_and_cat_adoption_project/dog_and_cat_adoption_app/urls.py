@@ -1,8 +1,13 @@
 from django.urls import path
-from . import views
+from . import views     # .  is everything from views
+
+
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('about/', views.about, name='about'),  
-    path('pets/', views.pets, name='index'),
+    path('', views.home, name='home'),  # name='home' is kwarg (key of name and a value of home)
+    path('about/', views.about, name='about'), 
+
+
+
+    # path('pets/', views.pets, name='index'),
 ]

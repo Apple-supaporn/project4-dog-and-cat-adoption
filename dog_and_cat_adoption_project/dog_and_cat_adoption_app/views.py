@@ -1,10 +1,6 @@
 from django.shortcuts import render
-from .models import Pet
+#from .models import Pet
 #from django.http import HttpResponse
-
-
-
-
 
 
 
@@ -13,12 +9,12 @@ from .models import Pet
 
 # Create your views here.
 def home(request):
-    return render(request, 'pets/home.html')
+    return render(request, 'dogncat/home.html')
 
 def about(request):
-    return render(request, 'pets/about.html')  
+    return render(request, 'dogncat/about.html')  
 
 
-def pets(request):
-    pets = Pet.object.all()
-    return render(request, 'pets/pets_index.html', {'pets' : pets}) 
+# def pets(request):
+#     pets = Pet.object.all()
+#     return render(request, 'pets/pets_index.html', {'pets' : pets}) 
