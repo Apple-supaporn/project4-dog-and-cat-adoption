@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dog and Cat Adoption</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="hero is-primary">
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a href="/" class="navbar-item">
+                <h1 class="title is-3">Dog and Cat Adoption</h1>
+              </a>
+            </div>
+            <div class="navbar-menu">
+              <div class="navbar-end">
+                <a href="/about" class="navbar-item">About</a>
+                <a href="/pets"class="navbar-item">View Dogs and Cats</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main class="section">
+      {% block content %}
+      {% endblock %}
+    </main>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          All Rights Reserved, &copy; {{ year }} Dog and Cat Adoption
+        </p>
+      </div>
+    </footer>
+</body>
+</html>
