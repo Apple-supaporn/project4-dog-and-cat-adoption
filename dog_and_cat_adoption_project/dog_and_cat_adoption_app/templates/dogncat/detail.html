@@ -2,22 +2,30 @@
 {% block content %}
 
 <section class="section">
-  <div class="container">
-    <h1 class="title">Pet Details</h1>
+    <div class="container">
+        <h1 class="title">Pet Details</h1>
 
-    <div class="columns">
-      <div class="column is-two-thirds">
-        <div class="card">
-          <div class="card-content">
-            <p class="title">{{ pet.name }}</p>
-            <p class="subtitle">Breed: {{ pet.breed }}</p>
-            <p>{{ pet.description | linebreaks }}</p>
-          </div>
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title">{{ pet.name }}</p>
+                        <p class="subtitle">Type: {{ pet.pet_type }}</p>
+                        <p class="subtitle">Age: {{ pet.age }}</p>
+                        <p class="subtitle">Weight: {{ pet.weight }}</p>
+                        <p class="subtitle">Gender: {{ pet.gender }}</p>
+                        <p class="subtitle">Breed: {{ pet.breed }}</p>
+                        <p class="subtitle">Adoption Status: {{ pet.adoption_status }}</p>
+                        <p class="subtitle">Description: {{ pet.description | linebreaks }}</p>
+                    </div>
+                    <div class="class-action">
+                        <a href="{% url 'pets_update' pet.id %}" class="button is-primary">Edit</a>
+                        <a href="{% url 'pets_delete' pet.id %}" class="button is-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
-  </div>
 </section>
 
 {% endblock %}

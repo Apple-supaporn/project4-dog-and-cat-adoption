@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Pet
 #from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 
@@ -32,3 +32,13 @@ def pets_detail(request, pet_id):
 class PetCreate(CreateView):
     model = Pet
     fields = '__all__'
+
+
+class PetUpdate(UpdateView):
+    model = Pet
+    fields = ['pet_type', 'name', 'age', 'weight', 'gender', 'breed', 'adoption_status', 'description']
+
+
+class PetDelete(DeleteView):
+    model = Pet
+    succes_url = '/pets'
