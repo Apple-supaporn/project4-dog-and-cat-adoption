@@ -41,4 +41,4 @@ class PetUpdate(UpdateView):
 
 class PetDelete(DeleteView):
     model = Pet
-    succes_url = '/pets'
+    success_url = '/pets/'

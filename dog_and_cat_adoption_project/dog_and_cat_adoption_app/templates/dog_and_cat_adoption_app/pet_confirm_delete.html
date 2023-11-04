@@ -1,0 +1,18 @@
+{% extends 'dogncat/base.html' %}
+
+{% block content %}
+    <h1 class="title is-4">Delete Pet</h1>
+    <h4 class="subtitle">Are you sure you want to delete <span class="teal-text">"{{ object.name }}"</span>?</h4>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="field is-grouped">
+            <div class="control">
+                <input type="submit" value="Yes - Delete!" class="button is-danger">
+            </div>
+            <div class="control">
+                <a href="{% url 'detail' pet.id %}" class="button is-link">Cancel</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
