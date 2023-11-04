@@ -6,20 +6,12 @@
     <h1 class="title">Dog and Cat List</h1>
 
     <div class="columns is-multiline">
-      {% for pet in pets %}
+      {% for pet in pet %}
         <div class="column is-one-third">
           <div class="card">
             <div class="card-content">
               <p class="title is-4">{{ pet.name }}</p>
               <p><strong>Breed:</strong> {{ pet.breed }}</p>
-              <p><strong>Description:</strong> {{ pet.description }}</p>
-              <p><strong>Age:</strong>
-                {% if pet.age > 0 %}
-                  {{ pet.age }}
-                {% else %}
-                  Woof! Meow!
-                {% endif %}
-              </p>
             </div>
           </div>
         </div>

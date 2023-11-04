@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Dog and Cat Adoption</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 </head>
 <body>
   <section class="hero is-primary is-bold">
@@ -22,8 +22,13 @@
               </span>
               <span>Dog and Cat Adoption</span>
             </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
-          <div class="navbar-menu">
+          <div class="navbar-menu" id="navbarMenu">
             <div class="navbar-end">
               <a class="navbar-item" href="/about">About</a>
               <a class="navbar-item" href="/adoption">Adoption</a>
@@ -44,5 +49,17 @@
       </div>
     </div>
   </footer>
+  <script>
+    // JavaScript to toggle the mobile menu
+    document.addEventListener('DOMContentLoaded', function () {
+      const navbarBurger = document.querySelector('.navbar-burger');
+      const navbarMenu = document.querySelector('#navbarMenu');
+
+      navbarBurger.addEventListener('click', function () {
+        navbarBurger.classList.toggle('is-active');
+        navbarMenu.classList.toggle('is-active');
+      });
+    });
+  </script>
 </body>
 </html>

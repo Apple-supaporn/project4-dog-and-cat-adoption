@@ -1,13 +1,13 @@
 from django.shortcuts import render
-#from .models import Pet
+from .models import Pet
 #from django.http import HttpResponse
 
 
 
-pets = [
-  {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
-  {'name': 'Sachi', 'breed': 'calico', 'description': 'gentle and loving', 'age': 2},
-]
+# pets = [
+#   {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
+#   {'name': 'Sachi', 'breed': 'calico', 'description': 'gentle and loving', 'age': 2},
+# ]
 
 
 # Create your views here.
@@ -19,4 +19,5 @@ def about(request):
 
 
 def adoption_index(request):
-    return render(request, 'dogncat/index.html', {'pets' : pets}) 
+    pet = Pet.objects.all()
+    return render(request, 'dogncat/index.html', {'pet' : pet}) 
