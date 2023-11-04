@@ -1,0 +1,70 @@
+{% extends 'dogncat/base.html' %}
+
+{% block content %}
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Add Pet</h1>
+            <form action="" method="POST" class="box">
+                {% csrf_token %}
+                <div class="field">
+                    <label class="label">Pet Type</label>
+                    <div class="control">
+                        {{ form.pet_type }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Name</label>
+                    <div class="control">
+                        {{ form.name }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Age</label>
+                    <div class="control">
+                        {{ form.age }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Weight</label>
+                    <div class="control">
+                        {{ form.weight }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Gender</label>
+                    <div class="control">
+                        {{ form.gender }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Breed</label>
+                    <div class="control">
+                        {{ form.breed }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Adoption Status</label>
+                    <div class="control">
+                        {{ form.adoption_status }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        {{ form.description }}
+                    </div>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <input type="submit" value="Submit" class="button is-primary">
+                    </div>
+                    <div class="control">
+                        <a href="{% url 'index' %}" class="button is-link">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+{% endblock %}

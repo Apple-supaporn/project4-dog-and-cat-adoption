@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Pet
 #from django.http import HttpResponse
+from django.views.generic.edit import CreateView
 
 
 
@@ -10,7 +11,7 @@ from .models import Pet
 # ]
 
 
-# Create your views here.
+# CREATE YOUR VIEWS HERE | THESE ARE VIEW FUNCTIONS
 def home(request):
     return render(request, 'dogncat/home.html')
 
@@ -25,3 +26,9 @@ def pets_index(request):
 def pets_detail(request, pet_id):
     pet = Pet.objects.get(id=pet_id)
     return render(request, 'dogncat/detail.html', {'pet' : pet})
+
+
+# CLASS BASED VIEWS
+class PetCreate(CreateView):
+    model = Pet
+    fields = '__all__'
