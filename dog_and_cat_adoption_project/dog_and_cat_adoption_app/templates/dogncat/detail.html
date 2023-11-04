@@ -1,0 +1,23 @@
+{% extends 'dogncat/base.html' %}
+{% block content %}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Pet Details</h1>
+
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <div class="card">
+          <div class="card-content">
+            <p class="title">{{ pet.name }}</p>
+            <p class="subtitle">{{ pet.breed }}</p>
+            <p>{{ pet.description|linebreaks }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

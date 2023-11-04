@@ -2,22 +2,23 @@
 {% block content %}
 
 <section class="section">
-  <div class="container">
+    <div class="container">
     <h1 class="title">Dog and Cat List</h1>
-
-    <div class="columns is-multiline">
-      {% for pet in pet %}
-        <div class="column is-one-third">
-          <div class="card">
-            <div class="card-content">
-              <p class="title is-4">{{ pet.name }}</p>
-              <p><strong>Breed:</strong> {{ pet.breed }}</p>
-            </div>
-          </div>
+        <div class="columns is-multiline">
+            {% for pet in pet %}
+                <div class="column is-one-third">
+                    <div class="card">
+                        <a href="/pets/{{pet.id}}">
+                            <div class="card-content">
+                                <p class="title is-4">{{ pet.name }}</p>
+                                <p><strong>Breed:</strong> {{ pet.breed }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-      {% endfor %}
     </div>
-  </div>
 </section>
 
 {% endblock %}

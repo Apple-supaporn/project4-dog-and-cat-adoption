@@ -18,6 +18,10 @@ def about(request):
     return render(request, 'dogncat/about.html')  
 
 
-def adoption_index(request):
-    pet = Pet.objects.all()
-    return render(request, 'dogncat/index.html', {'pet' : pet}) 
+def pets_index(request):
+    pets = Pet.objects.all()
+    return render(request, 'dogncat/index.html', {'pet' : pets}) 
+
+def pets_detail(request, pet_id):
+    pet = Pet.objects.get(id=pet_id)
+    return render(request, 'dogncat/detail.html', {'pet' : pet})
