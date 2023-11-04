@@ -8,7 +8,8 @@
             {% for pet in pet %}
                 <div class="column is-one-third">
                     <div class="card">
-                        <a href="/pets/{{pet.id}}">
+                        <!-- detail is from urls.py -->
+                        <a href="{% url 'detail' pet.id %}">
                             <div class="card-content">
                                 <p class="title is-4">{{ pet.name }}</p>
                                 <p><strong>Breed:</strong> {{ pet.breed }}</p>
