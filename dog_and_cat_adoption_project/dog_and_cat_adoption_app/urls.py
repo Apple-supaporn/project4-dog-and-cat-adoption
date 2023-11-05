@@ -14,4 +14,5 @@ urlpatterns = [
     ## url to add photo
     path('pets/<int:pet_id>/add_photo/', views.add_photo, name="add_photo"),
 
+
 ]

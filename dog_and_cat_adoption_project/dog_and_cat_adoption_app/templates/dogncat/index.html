@@ -11,8 +11,16 @@
                         <!-- detail is from urls.py -->
                         <a href="{% url 'detail' pet.id %}">
                             <div class="card-content">
+
+                                <!-- Display the photo -->
+                                {% with pet.photo_set.first as pet_photo %}
+                                {% if pet_photo %}
+                                    <img src="{{ pet_photo.url }}" alt="{{ pet.name }} photo">
+                                {% else %}
+                                    <p>No Photo Available</p>
+                                {% endif %}
+                                {% endwith %}   
                                 <p class="title is-4">{{ pet.name }}</p>
-                                <p><strong>Breed:</strong> {{ pet.breed }}</p>
                             </div>
                         </a>
                     </div>

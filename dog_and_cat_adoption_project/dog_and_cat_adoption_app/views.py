@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Pet, Photo
-#from django.http import HttpResponse
+from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 ## imports for photo aws
@@ -50,7 +50,6 @@ def add_photo(request, pet_id):
 
 
 
-
 # CLASS BASED VIEWS
 class PetCreate(CreateView):
     model = Pet
@@ -62,10 +61,7 @@ class PetCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['pet'] = Pet()
-        return context
+
 
 
 class PetUpdate(UpdateView):
