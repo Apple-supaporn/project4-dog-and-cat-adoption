@@ -1,9 +1,13 @@
-from django.shortcuts import render
-from .models import Pet
+from django.shortcuts import render, redirect
+from .models import Pet, Photo
 #from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-
+## imports for photo aws
+import uuid
+import boto3
+## to access .env key
+import os
 
 # pets = [
 #   {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
@@ -28,6 +32,25 @@ def pets_detail(request, pet_id):
     return render(request, 'dogncat/detail.html', {'pet' : pet})
 
 
+## DEFINE THE ADD PHOTO VIEW
+def add_photo(request, pet_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            Photo.objects.create(url=url, pet_id=pet_id)
+        except Exception as e:
+            print('An error occurred uploading file to S3')
+            print(e)
+        return redirect('detail', pet_id=pet_id)
+
+
+
+
 # CLASS BASED VIEWS
 class PetCreate(CreateView):
     model = Pet
@@ -38,6 +61,11 @@ class PetCreate(CreateView):
         # assign the logged in user (self.request.user)
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pet'] = Pet()
+        return context
 
 
 class PetUpdate(UpdateView):

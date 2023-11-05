@@ -11,8 +11,7 @@ urlpatterns = [
     path('pets/create/', views.PetCreate.as_view(), name='pets_create'),
     path('pets/<int:pk>/update/', views.PetUpdate.as_view(), name='pets_update'),
     path('pets/<int:pk>/delete/', views.PetDelete.as_view(), name='pets_delete'),
+    ## url to add photo
+    path('pets/<int:pet_id>/add_photo/', views.add_photo, name="add_photo"),
 
-
-
-    # path('pets/', views.pets, name='index'),
 ]
