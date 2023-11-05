@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -15,7 +16,9 @@ class Pet(models.Model):
         ('available', 'Available'),
         ('pending', 'Pending'),
     ]
-    
+
+    # add foreign key field to User for the admin who creates the pet
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     pet_type = models.CharField(max_length=10, choices=PET_TYPE_CHOICES, default='dog')
     name = models.CharField(max_length=100)
     age = models.CharField(max_length=10)
@@ -31,4 +34,4 @@ class Pet(models.Model):
 
     # Handle redirecting for update and create
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pet_id' : self.id})
+        return reverse('detail', kwargs={'pet_id':self.id})

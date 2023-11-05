@@ -31,7 +31,13 @@ def pets_detail(request, pet_id):
 # CLASS BASED VIEWS
 class PetCreate(CreateView):
     model = Pet
-    fields = '__all__'
+    fields = ['pet_type', 'name', 'age', 'weight', 'gender', 'breed', 'adoption_status', 'description']
+
+    # inherited (built-in) method is called a valid cat form is being submitted
+    def form_valid(self, form):
+        # assign the logged in user (self.request.user)
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class PetUpdate(UpdateView):

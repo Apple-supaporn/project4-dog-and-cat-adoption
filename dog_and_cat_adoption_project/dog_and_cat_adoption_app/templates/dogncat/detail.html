@@ -18,10 +18,12 @@
                         <p class="subtitle">Adoption Status: {{ pet.adoption_status }}</p>
                         <p class="subtitle">Description: {{ pet.description | linebreaks }}</p>
                     </div>
+                    {% if user.is_authenticated %}
                     <div class="class-action">
                         <a href="{% url 'pets_update' pet.id %}" class="button is-primary">Edit</a>
                         <a href="{% url 'pets_delete' pet.id %}" class="button is-danger">Delete</a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
