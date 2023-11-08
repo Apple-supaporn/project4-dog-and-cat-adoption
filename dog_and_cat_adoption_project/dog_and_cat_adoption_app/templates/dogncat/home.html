@@ -1,10 +1,74 @@
 {% extends 'dogncat/base.html' %}
 
+{% load static %}
 {% block content %}
-          <h1 class="title">
-            Welcome to Dog and Cat Adoption
-          </h1>
-          <h2 class="subtitle">
-            Find your furry friend here.
-          </h2>
+<!-- Welcome section -->
+<section class="hero is-primary is-bold">
+  <div class="hero-body">
+      <div class="columns">
+        <div class="columns is-vcentered">
+        <!-- Left side: Image -->
+        <div class="column is-6">
+          <img src="{% static 'images/Cute.jpeg' %}" alt="pets" class="big-photo" style="width: 100%;">
+        </div>
+          <!-- Right side: Message -->
+        <div class="column is-5 is-offset-1">
+          <h1 class="title is-1 has-text-white bigger-text"> Thankful for ...a Second Chance</h1>
+          <h2 class="title is-4 has-text-white"> We love animals and give them hope. <br>Find your furry friend <a href="{% url 'index' %}" style="text-decoration: underline;">here</a></h2>
+        </div>
+      </div>
+  </div>
+</section>
+<br>
+<br>
+<br>
+
+<!-- Meet the dog & cat section -->
+<section class="hero is-bold">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column">
+        <img src="{% static 'images/meet-the-dog.jpeg' %}" alt="Dog" class="pet-photo round-image" style="border-radius: 50%; width: 400px; height: 400px;">
+        <p class="has-text-centered title is-2"><br><a href="{% url 'index' %}?pet_type=dog">Meet the Dogs</a></p>
+      </div>
+      <div class="column">
+        <img src="{% static 'images/meet-the-cat.jpeg' %}" alt="Cat" class="pet-photo round-image" style="border-radius: 50%; width: 400px; height: 400px;">
+        <p class="has-text-centered title is-2"><br><a href="{% url 'index' %}?pet_type=cat">Meet the Cats</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<br>
+<br>
+
+<!-- Adoption requirements section -->
+<section class="hero is-light">
+  <div class="container">
+
+<h1 class="title has-text-centered"><br><br>Adoption Requirements</h1><br>
+
+<h2 class="subtitle has-text-centered">Are you ready to adopt? Great! We’ve outlined everything you need to 
+  know before adopting your new best friend. Each animal at our shelter 
+  has their own story, and we want to make sure your next chapter together 
+  is filled with health, love, and friendship. We take special steps to make 
+  sure both you and your future pet are ready to find one another.<br><br>Visit our adoption center and be prepared to fall in love. Our counselors will help find the right animal for you.</h2><br><br>
+
+  </div>
+</section>
+
+<section class="hero is-light">
+  <div class="container">
+
+
+
+  </div>
+</section>
+
+<!-- <style>
+  .bigger-text {
+    font-size: 5rem;
+}
+</style> -->
+
 {% endblock %}

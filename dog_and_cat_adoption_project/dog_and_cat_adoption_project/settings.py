@@ -122,6 +122,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # add LOGIN_REDIRECT_URL to specify where a successful login should be redirected.
 LOGIN_REDIRECT_URL = '/pets/'
 

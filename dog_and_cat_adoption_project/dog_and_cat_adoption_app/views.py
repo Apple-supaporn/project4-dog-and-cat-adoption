@@ -25,6 +25,16 @@ def about(request):
 
 def pets_index(request):
     pets = Pet.objects.all()
+
+    pet_type = request.GET.get('pet_type') ## add for filter
+    if pet_type:
+        pets = pets.filter(pet_type=pet_type)
+    
+    context = {
+        'pets': pets,
+    }       ## end for filter
+
+
     return render(request, 'dogncat/index.html', {'pet' : pets}) 
 
 def pets_detail(request, pet_id):
@@ -55,7 +65,7 @@ class PetCreate(CreateView):
     model = Pet
     fields = ['pet_type', 'name', 'age', 'weight', 'gender', 'breed', 'adoption_status', 'description']
 
-    # inherited (built-in) method is called a valid cat form is being submitted
+    # inherited (built-in) method is called a valid pet form is being submitted
     def form_valid(self, form):
         # assign the logged in user (self.request.user)
         form.instance.user = self.request.user

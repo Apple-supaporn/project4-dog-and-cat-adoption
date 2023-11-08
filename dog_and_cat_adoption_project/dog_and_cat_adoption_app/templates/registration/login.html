@@ -1,12 +1,37 @@
 {% extends 'dogncat/base.html' %}
-{% block content%}
 
-<h1>Log In</h1>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}"/>
-    <input type="submit" class="btn" value="Log In"/>
-</form>
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-5">
+            <h1 class="title has-text-centered">Log In</h1>
+                <form method="POST" action="" class="box">
+                {% csrf_token %}
+                    <div class="field">
+                        <label class="label"> Username: <br> {{ form.username }} </label>
+                        <label class="label"> Password: <br> <input type="password" name="password" id="passwordInput"> </label>
+                        <label class="checkbox"><input type="checkbox" id="showPasswordCheckbox"> Show Password </label>
+                        <label class="field is-grouped is-grouped-centered"><br><button type="submit" class="button is-primary"> Log In </button> </label>
+                    </div>
+                    <input type="hidden" name="next" value="{{ next }}">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript to toggle password visibility -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const passwordInput = document.getElementById('passwordInput')
+        const showPasswordCheckbox = document.getElementById('showPasswordCheckbox')
+        showPasswordCheckbox.addEventListener('change', function () {
+            passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password'
+        })
+    })
+</script>
+
 
 {% endblock %}
