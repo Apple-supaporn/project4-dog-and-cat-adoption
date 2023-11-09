@@ -5,66 +5,73 @@
 <section class="hero is-primary is-bold">
     <div class="hero-body">
         <div class="columns">
-          <div class="columns is-vcentered">
-                      <!-- Right side: Message -->
-        <div class="column is-5 is-offset-1">
-            <h1 class="title is-1 has-text-white"> Adopt a Pet </h1>
-            <h2 class="subtitle has-text-white"> Finding Your Best Friend </h2>
-            <p>Are you ready to adopt? Great! We’ve outlined everything you need to 
-                know before adopting your new best friend. Each animal at our shelter 
-                has their own story, and we want to make sure your next chapter together 
-                is filled with health, love, and friendship. We take special steps to make 
-                sure both you and your future pet are ready to find one another. </p> 
-          </div>
-          <!-- Left side: Image -->
-          <div class="column is-6">
-            <img src="{% static 'images/landing_01.jpeg' %}" alt="pets" class="big-photo" style="width: 100%;">
-          </div>
-
+            <div class="columns is-vcentered">
+                <!-- Right side: Message -->
+                <div class="column is-5 is-offset-1">
+                    <h1 class="title is-1 has-text-white"> Adopt a Pet </h1>
+                    <h2 class="subtitle has-text-white"> Finding Your Best Friend </h2>
+                    <p>Are you ready to adopt? Great! We’ve outlined everything you need to 
+                        know before adopting your new best friend. Each animal at our shelter 
+                        has their own story, and we want to make sure your next chapter together 
+                        is filled with health, love, and friendship. We take special steps to make 
+                        sure both you and your future pet are ready to find one another. </p> 
+                </div>
+                <!-- Left side: Image -->
+                <div class="column is-6">
+                    <img src="{% static 'images/landing_01.jpeg' %}" alt="pets" class="big-photo" style="width: 100%;">
+                </div>
+            </div>
         </div>
     </div>
-  </section>
-
-
+</section>
 
 <section class="section">
     <div class="container">
     <h1 class="title">See All Dog and Cat List</h1>
-        <div class="columns is-multiline">
-            <!-- Filter form -->
-            <form method="GET">
-                <label for="pet_type_filter">Filter by Pet Type:</label>
+        <!-- Filter form -->
+        <form method="GET">
+            <label for="pet_type_filter">Filter by Pet Type:</label>
                 <select id="pet_type_filter" name="pet_type">
                     <option value="">All</option>
                     <option value="dog">Dog</option>
                     <option value="cat">Cat</option>
                 </select>
-                <button type="submit">Filter</button>
-            </form>
-
-            {% for pet in pet %}
-                <div class="column is-one-third">
-                    <div class="card">
-                        <!-- detail is from urls.py -->
-                        <a href="{% url 'detail' pet.id %}">
-                            <div class="card-content">
-                                <!-- Display the photo -->
-                                {% with pet.photo_set.first as pet_photo %}
+            <button type="submit">Filter</button>
+        </form>
+        <!-- End filter form -->
+        <div class="columns is-multiline">
+        {% for pet in pet %}
+            <div class="column is-3">
+                <div class="card">
+                    <!-- detail is from urls.py -->
+                    <a href="{% url 'detail' pet.id %}">
+                        <div class="card-content">
+                            <!-- Display the photo -->
+                            {% with pet.photo_set.first as pet_photo %}
                                 {% if pet_photo %}
                                     <img src="{{ pet_photo.url }}" alt="{{ pet.name }} photo">
                                 {% else %}
                                     <p>No Photo Available</p>
                                 {% endif %}
-                                {% endwith %}   
-                                <p class="title is-4">{{ pet.name }}</p>
-                            </div>
-                        </a>
-                    </div>
+                            {% endwith %}   
+                            <p class="title is-4 is-text-centered">{{ pet.name }}</p>
+                            <p class="subtitle is-6">Breed: {{pet.breed}} <br>Status: {{ pet.adoption_status }}</p>
+                        </div>
+                    </a>
                 </div>
-            {% endfor %}
+            </div>
+        {% endfor %}
         </div>
     </div>
 </section>
 
+<style>
+.columns.is-multiline {
 
+    margin-top: 10px;
+}
+.column.is-3 {
+    margin-top: 10px;
+}
+</style>
 {% endblock %}

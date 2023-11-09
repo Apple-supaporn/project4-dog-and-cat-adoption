@@ -26,7 +26,7 @@ class Pet(models.Model):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default='male')
     breed = models.CharField(max_length=100)
     adoption_status = models.CharField(max_length=25, choices=ADOPTION_STATUS_CHOICES, default='available')
-    description = models.TextField(max_length=500)
+    description = models.TextField(max_length=2500)
 
 
     def __str__(self):
