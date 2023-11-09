@@ -30,8 +30,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-# ALLOWED_HOSTS = ['*',]
-ALLOWED_HOSTS = ['https://dogandcat-adoption-c23fc9844c3a.herokuapp.com/']
+ALLOWED_HOSTS = ['*',]
+
 
 # Application definition
 
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'dog_and_cat_adoption_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-db_from_env = dj_database_url.config(conn_max_age=600)
+
 DATABASES['default'].update(db_from_env)
 
 DATABASES = {
@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'dogandcat_adoption',
     }
 }
-
+db_from_env = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
