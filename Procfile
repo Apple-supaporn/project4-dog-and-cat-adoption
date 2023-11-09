@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath dog_and_cat_adoption_project dog_and_cat_adoption_project.wsgi
