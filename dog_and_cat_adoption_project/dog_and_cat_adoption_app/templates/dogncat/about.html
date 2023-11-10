@@ -1,5 +1,76 @@
 {% extends 'dogncat/base.html' %}
-    
-    {% block content %}
-        <h2>About Paws to Happiness</h2>
-    {% endblock %}
+
+{% load static %}
+
+{% block content %}
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <!-- Left side: Image -->
+                <div class="column is-6">
+                    <img src="{% static 'images/SPCA.jpeg' %}" alt="pets" class="big-photo" style="width: 100%;">
+                </div>
+                <!-- Right side: Message -->
+                <div class="column is-6">
+                    <h1 class="title is-1 has-text-white has-text-centered" > Compassion Meets Action </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-8 is-offset-2">
+                    <br>
+                    <br>
+                    <p class="title is-2 has-text-centered">
+                        About us
+                    </p>
+                    <p class="is-size-4 has-text-centered">
+                        Since 1868, the San Francisco SPCA has been advocating for animals.
+                    </p>
+                    <br>
+                    <p class="is-size-4">
+                        Today, we continue transforming how pet guardians and their furry friends access lifesaving care through our world-class veterinary hospital, adoption center, and community medicine programs. Vision 2030 builds on our groundbreaking work to provide access to care for animals throughout California, especially in regions like the Central Valley. Our goal is to positively impact the lives of five million animals in the next ten years.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br>
+<br>
+
+<section class="hero is-bold">
+    <div class="container">
+        <div class="columns is-multiline is-centered">
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title is-2 has-text-centered">Vision</p>
+                        <p class="is-size-5">We envision a world in which the love people share with animals uplifts humanity to a state of greater compassion.</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4">
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title is-2 has-text-centered">Mission</p>
+                        <p class="is-size-5">To ensure every companion animal has access to quality medical care, compassionate shelter, and a loving home.</p>
+                    <br></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
