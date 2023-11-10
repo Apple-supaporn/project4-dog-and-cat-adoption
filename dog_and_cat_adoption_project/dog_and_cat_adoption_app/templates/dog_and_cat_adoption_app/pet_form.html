@@ -9,7 +9,7 @@
             <h1 class="title">Add Pet</h1>
     {% endif %}
             <!-- Leaving the action empty makes the form post to the same url used to display it -->
-            <form action="" method="POST" class="box" enctype="multipart/form-data">
+            <form action="{% if object %}{% url 'pets_update' object.id %}{% else %}{% url 'pets_create' %}{% endif %}" method="POST" class="box" enctype="multipart/form-data">
                 <!-- Django requires the following for security purposes -->
                 {% csrf_token %}
                 <div class="field">
@@ -60,24 +60,8 @@
                         {{ form.description }}
                     </div>
                 </div>
+                      
 
-                <!-- PHOTO markup -->
-                {% for photo in object.photo_set.all %}
-                    <img class="responsive-img card-panel" src="{{photo.url}}" alt="pet">
-                {% empty %}
-                    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-                {% endfor %}
-                
-                <!-- Form for Uploading Photos -->
-                {% if user.is_authenticated %}
-                    <div class="field">
-                        <label class="label">Upload Photo</label>
-                        <div class="control">
-                            <input type="file" name="photo-file">
-                        </div>
-                    </div>
-                {% endif %}
-                <!-- End photo markup -->
                 <br>
                 <div class="field is-grouped">
                     <div class="control">

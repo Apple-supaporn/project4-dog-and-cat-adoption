@@ -54,8 +54,9 @@ def add_photo(request, pet_id):
             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
             Photo.objects.create(url=url, pet_id=pet_id)
         except Exception as e:
-            print('An error occurred uploading file to S3')
-            print(e)
+            logging.error('An error occurred uploading file to S3')
+            logging.error(e)
+            return HttpResponse(status=500)
         return redirect('detail', pet_id=pet_id)
 
 

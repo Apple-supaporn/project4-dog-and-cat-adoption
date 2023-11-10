@@ -3,54 +3,53 @@
 
 <section class="section">
     <div class="container">
-        <h1 class="title">Pet Details</h1>
-
-        <div class="columns">
-            <div class="column is-two-thirds">
-                <div class="card">
-                    <div class="card-content">
-                        <p class="title">{{ pet.name }}</p>
-                        <p class="subtitle">Type: {{ pet.pet_type }}</p>
-                        <p class="subtitle">Age: {{ pet.age }}</p>
-                        <p class="subtitle">Weight: {{ pet.weight }}</p>
-                        <p class="subtitle">Gender: {{ pet.gender }}</p>
-                        <p class="subtitle">Breed: {{ pet.breed }}</p>
-                        <p class="subtitle">Adoption Status: {{ pet.adoption_status }}</p>
-                        <p class="subtitle">Description: {{ pet.description | linebreaks }}</p>
-                        <br>
-                        {% if user.is_authenticated %}
-                        <div class="class-action">
-                            <a href="{% url 'pets_update' pet.id %}" class="button is-primary">Edit</a>
-                            <a href="{% url 'pets_delete' pet.id %}" class="button is-danger">Delete</a>
-                        </div>
-                        {% endif %}
-
-                        <!-- PHOTO markup below -->
-                        {% for photo in pet.photo_set.all %}
+        <div class="card">
+            <div class="card-content">
+                <div class="columns is-multiline">
+                    {% for photo in pet.photo_set.all %}
+                        <div class="column is-one-third">
                             <img class="responsive-img card-panel" src="{{photo.url}}" alt="pet">
-                        {% empty %}
-                            <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-                        {% endfor %}
+                        </div>
+                    {% empty %}
+                        <div class="card-panel teal-text center-align">
+                            No Photos Uploaded
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                {% if user.is_authenticated %}
+                    <form action="{% url 'add_photo' pet.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+                        {% csrf_token %}
+                        <input type="file" name="photo-file"><br><br>
+                        <button type="submit" class="btn">Upload Photo</button>
+                    </form>
+                {% endif %}
+            </div>
 
-                        <!-- Form for Uploading Photos -->
-                        {% if user.is_authenticated %}
-                        <form action="{% url 'add_photo' pet.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-
-                            {% csrf_token %}
-                            <input type="file" name="photo-file">
-                            <br><br>
-                            <button type="submit" class="btn">Upload Photo</button>
-                        </form>
-                        {% endif %}
-                        <!-- End form for Uploading Photos -->
-                        
-
-
-                        <br><br>
-                        <a href="{% url 'index' %}">Back to see more Dog and Cats  </a>
+            <div class="card-content">
+                <div class="columns">
+                    <div class="column">
+                        <h1 class="title" style="margin-bottom: 40px;"> Meet {{ pet.name }} </h1>
+                        <p class="subtitle">{{ pet.description | linebreaks }}</p>
+                    </div>
+                    <div class="column">
+                        <p class="subtitle"><strong>Age:</strong> {{ pet.age }}</p>
+                        <p class="subtitle"><strong>Weight:</strong> {{ pet.weight }}</p>
+                        <p class="subtitle"><strong>Gender:</strong> {{ pet.gender }}</p>
+                        <p class="subtitle"><strong>Breed:</strong> {{ pet.breed }}</p>
+                        <p class="subtitle"><strong>Adoption Status:</strong> {{ pet.adoption_status }}</p>
                     </div>
                 </div>
-            </div>
+                {% if user.is_authenticated %}
+                    <div class="class-action">
+                        <br>
+                        <a href="{% url 'pets_update' pet.id %}" class="button is-primary">Edit</a>
+                        <a href="{% url 'pets_delete' pet.id %}" class="button is-danger">Delete</a>
+                    </div>
+                {% endif %}
+                <br><br>
+                <a href="{% url 'index' %}">Back to see more Dog and Cats  </a>
+            </div>                   
         </div>
     </div>
 </section>

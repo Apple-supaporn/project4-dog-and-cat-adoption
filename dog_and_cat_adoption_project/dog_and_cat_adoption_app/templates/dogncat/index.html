@@ -39,7 +39,7 @@
             <button type="submit">Filter</button>
         </form>
         <!-- End filter form -->
-        <div class="columns is-multiline">
+        <div class="columns is-multiline" style="margin-top: 25px;">
         {% for pet in pet %}
             <div class="column is-3">
                 <div class="card">
@@ -54,8 +54,8 @@
                                     <p>No Photo Available</p>
                                 {% endif %}
                             {% endwith %}   
-                            <p class="title is-4 is-text-centered">{{ pet.name }}</p>
-                            <p class="subtitle is-6">Breed: {{pet.breed}} <br>Status: {{ pet.adoption_status }}</p>
+                            <p class="title is-4"  style="margin-bottom: 30px; margin-top: 10px;">{{ pet.name }}</p>
+                            <p class="subtitle is-6"><strong>Breed:</strong> {{pet.breed}} <br><strong>Status:</strong> {{ pet.adoption_status }}</p>
                         </div>
                     </a>
                 </div>
@@ -65,13 +65,5 @@
     </div>
 </section>
 
-<style>
-.columns.is-multiline {
 
-    margin-top: 10px;
-}
-.column.is-3 {
-    margin-top: 10px;
-}
-</style>
 {% endblock %}
