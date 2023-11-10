@@ -1,7 +1,6 @@
 {% extends 'dogncat/base.html' %}
 {% load static %}
 {% block content %}
-
 <section class="hero is-primary is-bold">
     <div class="hero-body">
         <div class="columns">
@@ -28,17 +27,6 @@
 <section class="section">
     <div class="container">
     <h1 class="title">See All Dog and Cat List</h1>
-        <!-- Filter form -->
-        <form method="GET">
-            <label for="pet_type_filter">Filter by Pet Type:</label>
-                <select id="pet_type_filter" name="pet_type">
-                    <option value="">All</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                </select>
-            <button type="submit">Filter</button>
-        </form>
-        <!-- End filter form -->
         <div class="columns is-multiline" style="margin-top: 25px;">
         {% for pet in pet %}
             <div class="column is-3">

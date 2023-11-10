@@ -48,7 +48,7 @@
                     </div>
                 {% endif %}
                 <br><br>
-                <a href="{% url 'index' %}">Back to see more Dog and Cats  </a>
+                <a href="{% if request.GET.previous_page %}{{ request.GET.previous_page }}{% else %}{% url 'index' %}{% endif %}">Back to previous page</a>
             </div>                   
         </div>
     </div>

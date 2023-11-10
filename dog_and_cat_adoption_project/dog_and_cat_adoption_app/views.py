@@ -37,6 +37,35 @@ def pets_index(request):
 
     return render(request, 'dogncat/index.html', {'pet' : pets}) 
 
+
+###### ADD ######
+def dog_list(request):
+    breed_filter = request.GET.get('breed', '')
+    
+    if breed_filter:
+        dogs = Pet.objects.filter(pet_type='dog', breed__icontains=breed_filter)
+    else:
+        dogs = Pet.objects.filter(pet_type='dog')
+
+    context = {'dog': dogs}
+    return render(request, 'dogncat/dog_list.html', context)
+
+def cat_list(request):
+    breed_filter = request.GET.get('breed', '')
+    
+    if breed_filter:
+        cats = Pet.objects.filter(pet_type='cat', breed__icontains=breed_filter)
+    else:
+        cats = Pet.objects.filter(pet_type='cat')
+
+    context = {'cat': cats}
+    return render(request, 'dogncat/cat_list.html', context)
+###### END ADD ######
+
+
+
+
+
 def pets_detail(request, pet_id):
     pet = Pet.objects.get(id=pet_id)
     return render(request, 'dogncat/detail.html', {'pet' : pet})

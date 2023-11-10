@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views     # .  is everything from views
+from .views import dog_list, cat_list
 
 
 
@@ -14,5 +15,8 @@ urlpatterns = [
     ## url to add photo
     path('pets/<int:pet_id>/add_photo/', views.add_photo, name='add_photo'),
 
+    ##### ADD #####
+    path('dogs/', dog_list, name='dog_list'),
+    path('cats/', cat_list, name='cat_list'),
 
 ]
