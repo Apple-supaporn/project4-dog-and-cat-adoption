@@ -29,11 +29,11 @@
     <div class="columns is-vcentered">
       <div class="column">
         <img src="{% static 'images/meet-the-dog.jpeg' %}" alt="Dog" class="pet-photo round-image" style="border-radius: 50%; width: 400px; height: 400px;">
-        <p class="has-text-centered title is-2"><br><a href="{% url 'index' %}?pet_type=dog">Meet the Dogs</a></p>
+        <p class="has-text-centered title is-2"><br><a href="{% url 'dog_list' %}">Meet the Dogs</a></p>
       </div>
       <div class="column">
         <img src="{% static 'images/meet-the-cat.jpeg' %}" alt="Cat" class="pet-photo round-image" style="border-radius: 50%; width: 400px; height: 400px;">
-        <p class="has-text-centered title is-2"><br><a href="{% url 'index' %}?pet_type=cat">Meet the Cats</a></p>
+        <p class="has-text-centered title is-2"><br><a href="{% url 'cat_list' %}">Meet the Cats</a></p>
       </div>
     </div>
   </div>
@@ -64,12 +64,5 @@
 
   </div>
 </section>
-
-<!-- <style>
-.hero {
-       background-color: blue;
-    }
-
-</style> -->
 
 {% endblock %}

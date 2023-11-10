@@ -1,0 +1,40 @@
+{% extends 'dogncat/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">See All Dog List</h1>
+        <!-- Filter form -->
+        <form method="GET">
+            <label for="breed">Breed:</label>
+            <input type="text" name="breed">
+            <!-- add more filters if needed -->
+            <button type="submit">Apply Filter</button>
+        </form>
+        <!-- End filter form -->
+        
+        <div class="columns is-multiline" style="margin-top: 25px;">
+            {% for dog in dog %}
+                <div class="column is-3">
+                    <div class="card">
+                        <a href="{% url 'detail' dog.id %}?previous_page={{ request.path }}">
+                            <div class="card-content">
+                                {% with dog.photo_set.first as dog_photo %}
+                                    {% if dog_photo %}
+                                        <img src="{{ dog_photo.url }}" alt="{{ dog.name }} photo">
+                                    {% else %}
+                                        <p>No Photo Available</p>
+                                    {% endif %}
+                                {% endwith %}   
+                                <p class="title is-4" style="margin-bottom: 30px; margin-top: 10px;">{{ dog.name }}</p>
+                                <p class="subtitle is-6"><strong>Breed:</strong> {{ dog.breed }} <br><strong>Status:</strong> {{ dog.adoption_status }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
