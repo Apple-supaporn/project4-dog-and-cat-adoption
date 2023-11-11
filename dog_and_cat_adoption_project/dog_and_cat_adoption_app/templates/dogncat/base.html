@@ -49,7 +49,13 @@
               </div>
               <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
               {% else %}
-              <a class="navbar-item" href="{% url 'index' %}">Adoption</a>
+              <div class="navbar-item is-hoverable">
+                <a class="navbar-item has-text-white" href="{% url 'index' %}">Adoption</a>
+                <div class="navbar-dropdown has-background-primary-dark">
+                  <a class="navbar-item" href="{% url 'dog_list' %}">Dogs</a>
+                  <a class="navbar-item" href="{% url 'cat_list' %}">Cats</a>
+                  <!-- add more dropdown if needed -->
+                </div>
               {% endif %}
             </div>
           </div>
