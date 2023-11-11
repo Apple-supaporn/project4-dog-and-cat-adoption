@@ -26,37 +26,39 @@ def about(request):
 def pets_index(request):
     pets = Pet.objects.all()
 
-    pet_type = request.GET.get('pet_type') ## add for filter
-    if pet_type:
-        pets = pets.filter(pet_type=pet_type)
-    
-    context = {
-        'pets': pets,
-    }       ## end for filter
+    # Handle sorting
+    sort_by = request.GET.get('sort_by', 'name')  # Default to sorting by name
+    pets = pets.order_by(sort_by)
 
+    context = {'pet': pets}
 
-    return render(request, 'dogncat/index.html', {'pet' : pets}) 
+    return render(request, 'dogncat/index.html', context)
 
 
 ###### ADD ######
 def dog_list(request):
-    breed_filter = request.GET.get('breed', '')
+    sort_by_options = ['name', 'gender', 'breed']
+    sort_by = request.GET.get('sort_by', 'name')    # Default to sorting by name
+
+    if sort_by not in sort_by_options:
+        sort_by = 'name' 
+
     
-    if breed_filter:
-        dogs = Pet.objects.filter(pet_type='dog', breed__icontains=breed_filter)
-    else:
-        dogs = Pet.objects.filter(pet_type='dog')
+    dogs = Pet.objects.filter(pet_type='dog').order_by(sort_by)
 
     context = {'dog': dogs}
     return render(request, 'dogncat/dog_list.html', context)
 
+
+
 def cat_list(request):
-    breed_filter = request.GET.get('breed', '')
+    sort_by_options = ['name', 'gender', 'breed']
+    sort_by = request.GET.get('sort_by', 'name')  # Default to sorting by name
+
+    if sort_by not in sort_by_options:
+        sort_by = 'name'
     
-    if breed_filter:
-        cats = Pet.objects.filter(pet_type='cat', breed__icontains=breed_filter)
-    else:
-        cats = Pet.objects.filter(pet_type='cat')
+    cats = Pet.objects.filter(pet_type='cat').order_by(sort_by)
 
     context = {'cat': cats}
     return render(request, 'dogncat/cat_list.html', context)

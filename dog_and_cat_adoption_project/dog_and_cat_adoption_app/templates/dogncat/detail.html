@@ -48,7 +48,11 @@
                     </div>
                 {% endif %}
                 <br><br>
-                <a href="{% if request.GET.previous_page %}{{ request.GET.previous_page }}{% else %}{% url 'index' %}{% endif %}">Back to previous page</a>
+                
+                <a href="{% if request.GET.previous_page %}{{ request.GET.previous_page }}{% else %}{% url 'index' %}{% endif %}?sort_by={{ request.GET.sort_by }}">Back to previous page</a>
+
+
+
             </div>                   
         </div>
     </div>

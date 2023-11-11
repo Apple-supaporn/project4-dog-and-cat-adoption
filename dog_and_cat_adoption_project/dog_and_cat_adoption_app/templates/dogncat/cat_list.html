@@ -2,17 +2,44 @@
 {% load static %}
 {% block content %}
 
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="columns">
+            <div class="columns is-vcentered">
+                <!-- Right side: Message -->
+                <div class="column is-5 is-offset-1">
+                    <h1 class="title is-1 has-text-white"> Adoptable Cats </h1>
+                    <h2 class="subtitle has-text-white"> Full of Love and Waiting for you </h2>
+                    <p>Are you ready to adopt? Great! We’ve outlined everything you need to 
+                        know before adopting your new best friend. Each animal at our shelter 
+                        has their own story, and we want to make sure your next chapter together 
+                        is filled with health, love, and friendship. We take special steps to make 
+                        sure both you and your future pet are ready to find one another. </p> 
+                </div>
+                <!-- Left side: Image -->
+                <div class="column is-6">
+                    <img src="{% static 'images/cat_header.png' %}" alt="pets" class="big-photo" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <section class="section">
     <div class="container">
         <h1 class="title">See All Cat List</h1>
-        <!-- Filter form -->
+        <!-- Sort form -->
         <form method="GET">
-            <label for="breed">Breed:</label>
-            <input type="text" name="breed">
-            <!-- add more filter if needed -->
-            <button type="submit">Apply Filter</button>
+            <label for="sort_by">Sort By:</label>
+            <select id="sort_by" name="sort_by">
+                <option value="name">Name</option>
+                <option value="gender">Gender</option>
+                <option value="breed">Breed</option>
+            </select>
+            <button type="submit">Apply Sort</button>
         </form>
-        <!-- End filter form -->
+        <!-- End sort form -->
         
         <div class="columns is-multiline" style="margin-top: 25px;">
             {% for cat in cat %}
@@ -28,7 +55,12 @@
                                     {% endif %}
                                 {% endwith %}   
                                 <p class="title is-4" style="margin-bottom: 30px; margin-top: 10px;">{{ cat.name }}</p>
-                                <p class="subtitle is-6"><strong>Breed:</strong> {{ cat.breed }} <br><strong>Status:</strong> {{ cat.adoption_status }}</p>
+                                <p class="subtitle is-6">
+                                    <strong>Breed:</strong> {{cat.breed}} <br>
+                                    <strong>Age:</strong> {{ cat.age }} <br>
+                                    <strong>Gender:</strong> {{ cat.gender }} <br>
+                                    <strong>Status:</strong> {{ cat.adoption_status }} <br>
+                                </p>
                             </div>
                         </a>
                     </div>

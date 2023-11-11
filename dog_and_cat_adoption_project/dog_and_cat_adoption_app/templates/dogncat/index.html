@@ -7,13 +7,8 @@
             <div class="columns is-vcentered">
                 <!-- Right side: Message -->
                 <div class="column is-5 is-offset-1">
-                    <h1 class="title is-1 has-text-white"> Adopt a Pet </h1>
-                    <h2 class="subtitle has-text-white"> Finding Your Best Friend </h2>
-                    <p>Are you ready to adopt? Great! We’ve outlined everything you need to 
-                        know before adopting your new best friend. Each animal at our shelter 
-                        has their own story, and we want to make sure your next chapter together 
-                        is filled with health, love, and friendship. We take special steps to make 
-                        sure both you and your future pet are ready to find one another. </p> 
+                    <h1 class="title is-1 has-text-white bigger-text"> Thankful for ...a Second Chance</h1>
+                    <h2 class="subtitle has-text-white"> Finding Your New Furry Friend </h2>
                 </div>
                 <!-- Left side: Image -->
                 <div class="column is-6">
@@ -27,12 +22,24 @@
 <section class="section">
     <div class="container">
     <h1 class="title">See All Dog and Cat List</h1>
+        <!-- Sort form -->
+        <form method="GET">
+            <label for="sort_by">Sort By:</label>
+            <select id="sort_by" name="sort_by">
+                <option value="pet_type" {% if request.GET.sort_by == 'pet_type' %}selected{% endif %}>Type</option>
+                <option value="name" {% if request.GET.sort_by == 'name' %}selected{% endif %}>Name</option>
+                <option value="gender" {% if request.GET.sort_by == 'gender' %}selected{% endif %}>Gender</option>
+                <option value="breed" {% if request.GET.sort_by == 'breed' %}selected{% endif %}>Breed</option>
+            </select>
+            <button type="submit">Apply Sort</button>
+        </form>
+        <!-- End sort form -->
         <div class="columns is-multiline" style="margin-top: 25px;">
         {% for pet in pet %}
             <div class="column is-3">
                 <div class="card">
                     <!-- detail is from urls.py -->
-                    <a href="{% url 'detail' pet.id %}">
+                    <a href="{% url 'detail' pet.id %}?sort_by={{ request.GET.sort_by }}">
                         <div class="card-content">
                             <!-- Display the photo -->
                             {% with pet.photo_set.first as pet_photo %}
@@ -43,7 +50,13 @@
                                 {% endif %}
                             {% endwith %}   
                             <p class="title is-4"  style="margin-bottom: 30px; margin-top: 10px;">{{ pet.name }}</p>
-                            <p class="subtitle is-6"><strong>Breed:</strong> {{pet.breed}} <br><strong>Status:</strong> {{ pet.adoption_status }}</p>
+                            <p class="subtitle is-6">
+                                <strong>Breed:</strong> {{pet.breed}} <br>
+                                <strong>Age:</strong> {{ pet.age }} <br>
+                                <strong>Weight:</strong> {{ pet.weight }} <br>
+                                <strong>Gender:</strong> {{ pet.gender }} <br>
+                                <strong>Status:</strong> {{ pet.adoption_status }} <br>
+                            </p>
                         </div>
                     </a>
                 </div>
