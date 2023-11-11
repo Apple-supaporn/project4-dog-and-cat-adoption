@@ -3,9 +3,13 @@
 {% block content %}
 
 <section class="hero is-primary is-bold">
-    <div class="hero-body">
+    <div class="hero-body" style="height: 480px;">
         <div class="columns">
             <div class="columns is-vcentered">
+                <!-- Left side: Image -->
+                <div class="column is-6">
+                    <img src="{% static 'images/dog_header.jpeg' %}" alt="pets" class="big-photo" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
                 <!-- Right side: Message -->
                 <div class="column is-5 is-offset-1">
                     <h1 class="title is-1 has-text-white"> Adoptable Dogs </h1>
@@ -15,10 +19,6 @@
                         has their own story, and we want to make sure your next chapter together 
                         is filled with health, love, and friendship. We take special steps to make 
                         sure both you and your future pet are ready to find one another. </p> 
-                </div>
-                <!-- Left side: Image -->
-                <div class="column is-6">
-                    <img src="{% static 'images/dog_header.jpeg' %}" alt="pets" class="big-photo" style="width: 100%;">
                 </div>
             </div>
         </div>

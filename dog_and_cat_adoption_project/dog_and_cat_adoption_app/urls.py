@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views     # .  is everything from views
-from .views import dog_list, cat_list
+from .views import dog_list, cat_list, contact, hours_locations
 
 
 
@@ -18,5 +18,8 @@ urlpatterns = [
     ##### ADD #####
     path('dogs/', dog_list, name='dog_list'),
     path('cats/', cat_list, name='cat_list'),
+
+    path('contact/', contact, name='contact'),
+    path('hours-locations/', hours_locations, name='hours_locations')
 
 ]

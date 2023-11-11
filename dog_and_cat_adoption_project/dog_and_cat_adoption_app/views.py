@@ -22,6 +22,12 @@ def home(request):
 def about(request):
     return render(request, 'dogncat/about.html')  
 
+def contact(request):
+    return render(request, 'dogncat/contact.html')
+
+def hours_locations(request):
+    return render(request, 'dogncat/hours_locations.html')
+
 
 def pets_index(request):
     pets = Pet.objects.all()
