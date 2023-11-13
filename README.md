@@ -24,12 +24,12 @@ git clone https://github.com/Apple-supaporn/project4-dog-and-cat-adoption
 cd project4-dog-and-cat-adoption
 
 #### Set Up Virtual Environment:
-- Create a virtual environment to isolate dependencies.
+- Create a virtual environment to isolate dependencies.  
 python -m venv venv
-- Activate the virtual environment.
-On Windows: 
-.\venv\Scripts\activate
-On macOS/Linux:
+- Activate the virtual environment.  
+On Windows:  
+.\venv\Scripts\activate  
+On macOS/Linux:  
 source venv/bin/activate
 
 #### Install Dependencies:
