@@ -8,6 +8,7 @@ import uuid
 import boto3
 ## to access .env key
 import os
+import logging
 
 # pets = [
 #   {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
@@ -83,18 +84,23 @@ def pets_detail(request, pet_id):
 def add_photo(request, pet_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
+        print("Photo file received:", photo_file)
         s3 = boto3.client('s3')
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
         try:
             bucket = os.environ['S3_BUCKET']
+            print("Uploading file to S3 bucket:", bucket, "with key:", key)
             s3.upload_fileobj(photo_file, bucket, key)
             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            print("File uploaded successfully. URL:", url)
             Photo.objects.create(url=url, pet_id=pet_id)
         except Exception as e:
-            logging.error('An error occurred uploading file to S3')
-            logging.error(e)
+            print('An error occurred uploading file to S3')
+            print(e)
             return HttpResponse(status=500)
         return redirect('detail', pet_id=pet_id)
+    else:
+        print("No photo file received")
 
 
 
