@@ -14,7 +14,7 @@ Woof and Whiskers Adoption is a platform that provides full CRUD functionality. 
 ## Getting Started
 To access the deployed version of Woof and Whiskers Adoption platform, simply click on the following link: [Woof and Whiskers Adoption](https://dogandcat-adoption-c23fc9844c3a.herokuapp.com/)
 
-Project Planning :- If you're interested in learning more about the planning and development process of this application, you can check out my [Trello board](https://trello.com/b/bSekNsA8/dog-and-cat-adoption-python-project)
+Project Planning :- If you're interested in learning more about the planning and development process of this application which included User stories, Wireframes and Entity Relationship Diagrams(ERD), you can check out my [Trello board](https://trello.com/b/bSekNsA8/dog-and-cat-adoption-python-project)
 
 ## Installation steps for the app and dependencies
 #### Clone the Repository:
@@ -50,16 +50,6 @@ The site should be accessible at http://localhost:8000/ by default.
 #### If you created a superuser, access the Django admin interface at 
 http://localhost:8000/admin/ and log in.
 
-## User Stories
-- As a visitor, I want to read detailed information about each pet when I click on their profile.
-- As an administrator, I want to add new pet listings, including types, names, breeds, ages, descriptions, and photos.
-- As an administrator, I want to edit or remove pet listings and update their adoption statuses.
-- As a visitor, I want to see a list of available pets, including their names, photos, and brief descriptions.
-- As a visitor, I want to be able to search for pets based on criteria such as type, breed.
-
-## Wireframes
-
-## Entity relationship diagrams (ERD)
 
 ## Future Features
 - As a visitor, I want to be able to inquire about adopting a pet by filling out a contact form.
