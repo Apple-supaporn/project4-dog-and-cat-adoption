@@ -16,7 +16,7 @@ To access the deployed version of Woof and Whiskers Adoption platform, simply cl
 
 Project Planning :- If you're interested in learning more about the planning and development process of this application which included User stories, Wireframes and Entity Relationship Diagrams(ERD), you can check out my [Trello board](https://trello.com/b/bSekNsA8/dog-and-cat-adoption-python-project)
 
-## Installation steps for the app and dependencies
+### Installation steps for the app and dependencies
 #### Clone the Repository:
 git clone https://github.com/Apple-supaporn/project4-dog-and-cat-adoption
 
