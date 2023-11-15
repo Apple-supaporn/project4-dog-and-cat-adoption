@@ -129,7 +129,7 @@ STATIC_URL = 'static/'
 
 
 # add LOGIN_REDIRECT_URL to specify where a successful login should be redirected.
-LOGIN_REDIRECT_URL = '/pets/'
+LOGIN_REDIRECT_URL = '/'
 
 # LOGOUT_REDIRECT_URL tells Django where to take user after they logout rather than the default admin logout page
 LOGOUT_REDIRECT_URL = '/'

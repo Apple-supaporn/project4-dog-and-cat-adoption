@@ -47,7 +47,6 @@
                   <!-- add more dropdown if needed -->
                 </div>
               </div>
-              <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
               {% else %}
               <div class="navbar-item is-hoverable">
                 <a class="navbar-item has-text-white" href="{% url 'index' %}">Adoption</a>
@@ -58,6 +57,11 @@
                 </div>
               {% endif %}
             </div>
+            <a class="navbar-item" href="{% url 'hours_locations' %}">Locations</a>
+            {% if user.is_authenticated %}
+            <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
+            {% else %}
+            {% endif %}
           </div>
         </div>
       </nav>
@@ -77,9 +81,6 @@
       </div>
       <div class="column is-narrow">
         <a href="{% url 'contact' %}" class="has-text-gray" style="color: rgb(66, 66, 66);">Contact</a>
-      </div>
-      <div class="column is-narrow">
-        <a href="{% url 'hours_locations' %}" class="has-text-gray"  style="color: rgb(66, 66, 66);">Locations</a>
       </div>
       <div class="column is-narrow">
         <a href="{% url 'login' %}" class="has-text-gray" style="color: rgb(66, 66, 66);">Login</a>
@@ -103,6 +104,8 @@
       });
     });
   </script>
+
+
   
 </body>
 </html>
