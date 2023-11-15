@@ -31,16 +31,22 @@ def hours_locations(request):
     return render(request, 'dogncat/hours_locations.html')
 
 
+# def pets_index(request):
+#     pets = Pet.objects.all()
+
+#     # Handle sorting
+#     sort_by = request.GET.get('sort_by', 'name')  # Default to sorting by name
+#     pets = pets.order_by(sort_by)
+
+#     context = {'pet': pets}
+
+#     return render(request, 'dogncat/index.html', context)
 def pets_index(request):
-    pets = Pet.objects.all()
-
-    # Handle sorting
-    sort_by = request.GET.get('sort_by', 'name')  # Default to sorting by name
-    pets = pets.order_by(sort_by)
-
-    context = {'pet': pets}
-
-    return render(request, 'dogncat/index.html', context)
+    sort_by = request.GET.get('sort_by', 'name')
+    if sort_by == '':
+        sort_by = 'name'
+    pets = Pet.objects.all().order_by(sort_by)
+    return render(request, 'dogncat/index.html', {'pet': pets})
 
 
 ###### ADD ######
@@ -113,6 +119,8 @@ class PetCreate(CreateView):
         # assign the logged in user (self.request.user)
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
 
 
 
