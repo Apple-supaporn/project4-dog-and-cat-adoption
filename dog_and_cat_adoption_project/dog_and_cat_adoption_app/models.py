@@ -17,7 +17,6 @@ class Pet(models.Model):
         ('pending', 'Pending'),
     ]
 
-    # add foreign key field to User for the admin who creates the pet
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pet_type = models.CharField(max_length=10, choices=PET_TYPE_CHOICES, default='dog')
     name = models.CharField(max_length=100)
@@ -28,14 +27,11 @@ class Pet(models.Model):
     adoption_status = models.CharField(max_length=25, choices=ADOPTION_STATUS_CHOICES, default='available')
     description = models.TextField(max_length=2500)
 
-
     def __str__(self):
         return self.name
 
-    # Handle redirecting for update and create
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pet_id':self.id})
-
 
 
 # DEFINE THE PHOTO MODEL (ONE-TO-MANY, ONE PET CAN HAVE MANY PHOTOS)

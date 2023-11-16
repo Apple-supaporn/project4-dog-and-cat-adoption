@@ -1,11 +1,12 @@
 {% extends 'dogncat/base.html' %}
 {% load static %}
+
 {% block content %}
+
 <section class="hero is-primary is-bold">
     <div class="hero-body">
         <div class="columns">
             <div class="columns is-vcentered">
-                <!-- Right side: Message -->
                 <div class="column is-6">
                     <h1 class="title is-2 has-text-white"> Thankful for ...a Second Chance</h1>
                     <h2 class="subtitle has-text-white"> Our dogs and cats are looking for a loving home. 
@@ -14,9 +15,8 @@
                         these special friends, and welcome a furry companion into your life. 
                         Make a connection that lasts a lifetime, filled with gratitude and companionship.</h2>
                 </div>
-                <!-- Left side: Image -->
                 <div class="column is-6">
-                    <img src="{% static 'images/landing_01.jpeg' %}" alt="pets" class="big-photo" style="width: 100%;">
+                    <img src="{% static 'images/index-page-header.jpeg' %}" alt="pets" class="big-photo" style="width: 100%;">
                 </div>
             </div>
         </div>
@@ -38,11 +38,11 @@
             <button type="submit">Apply Sort</button>
         </form>
         <!-- End sort form -->
+
         <div class="columns is-multiline" style="margin-top: 25px;">
         {% for pet in pet %}
             <div class="column is-3">
                 <div class="card">
-                    <!-- detail is from urls.py -->
                     <a href="{% url 'detail' pet.id %}?sort_by={{ request.GET.sort_by }}">
                         <div class="card-content">
                             <!-- Display the photo -->

@@ -7,25 +7,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Woof and Whiskers Adoption</title>
+  <title> Woof and Whiskers Adoption </title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
   <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&family=DM+Serif+Display:ital@0;1&family=Jura&family=Lobster&family=Montserrat:wght@100&family=Noto+Serif+Balinese&family=Open+Sans:wght@400;700&family=PT+Serif:wght@400;700&family=Pattaya&family=Poppins:wght@100;200;300;400;500&family=Raleway&family=Righteous&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
+  <!-- Navigation Section -->
   <section class="hero is-primary is-bold">
     <div class="hero-head">
       <nav class="navbar">
         <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item" href="{% url 'home' %}">
-              <span class="icon">
-                <i class="fas fa-paw"></i>
-              </span>
-              <span class="is-size-5 sitename-font">Woof and Whiskers Adoption</span>
+              <span class="is-size-5 sitename-font mr-2"> Woof and Whiskers Adoption </span>
+              <img src="{% static 'favicon.ico' %}">
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
               <span aria-hidden="true"></span>
@@ -33,69 +31,86 @@
               <span aria-hidden="true"></span>
             </a>
           </div>
-
-
           <div class="navbar-menu has-text-white" id="navbarMenu">
             <div class="navbar-end">
               <a class="navbar-item" href="{% url 'about' %}">About</a>
-                {% if user.is_authenticated %}
+
+              {% if user.is_authenticated %}
                 <a class="navbar-item" href="{% url 'pets_create' %}">Add a Pet</a>
 
-              <div class="navbar-item is-hoverable">
-                <a class="navbar-item has-text-white" href="{% url 'index' %}">Adoption</a>
-                <div class="navbar-dropdown has-background-primary-dark">
-                  <a class="navbar-item" href="{% url 'dog_list' %}">Dogs</a>
-                  <a class="navbar-item" href="{% url 'cat_list' %}">Cats</a>
-                  <!-- add more dropdown if needed -->
+                <div class="navbar-item is-hoverable">
+                  <a class="navbar-item has-text-white" href="{% url 'index' %}">Adoption</a>
+                  <div class="navbar-dropdown has-background-primary-dark">
+                    <a class="navbar-item" href="{% url 'dog_list' %}">Dogs</a>
+                    <a class="navbar-item" href="{% url 'cat_list' %}">Cats</a>
+                    <!-- add more dropdown if needed -->
+                  </div>
                 </div>
-              </div>
               {% else %}
-              <div class="navbar-item is-hoverable">
-                <a class="navbar-item has-text-white" href="{% url 'index' %}">Adoption</a>
-                <div class="navbar-dropdown has-background-primary-dark">
-                  <a class="navbar-item" href="{% url 'dog_list' %}">Dogs</a>
-                  <a class="navbar-item" href="{% url 'cat_list' %}">Cats</a>
-                  <!-- add more dropdown if needed -->
+                <div class="navbar-item is-hoverable">
+                  <a class="navbar-item has-text-white" href="{% url 'index' %}">Adoption</a>
+                  <div class="navbar-dropdown has-background-primary-dark">
+                    <a class="navbar-item" href="{% url 'dog_list' %}">Dogs</a>
+                    <a class="navbar-item" href="{% url 'cat_list' %}">Cats</a>
+                    <!-- add more dropdown if needed -->
+                  </div>
                 </div>
               {% endif %}
+              <a class="navbar-item" href="{% url 'hours_locations' %}">Locations</a>
+              <a class="navbar-item" href="{% url 'contact' %}">Contact</a>
+              {% if user.is_authenticated %}
+                <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
+              {% else %}
+              {% endif %}
             </div>
-            <a class="navbar-item" href="{% url 'hours_locations' %}">Locations</a>
-            {% if user.is_authenticated %}
-            <a class="navbar-item" href="{% url 'logout' %}">Log Out</a>
-            {% else %}
-            {% endif %}
           </div>
         </div>
       </nav>
     </div>
   </section>
-
+  
+  <!-- Main Content Section -->
   <main class="section">
     {% block content %}
     {% endblock %}
   </main>
 
-<footer class="footer">
-  <div class="container has-text-centered">
-    <div class="columns is-centered is-multiline">
-      <div class="column is-narrow">
-        <a href="{% url 'home' %}" class="has-text-gray" style="color: rgb(95, 95, 95);">Career</a>
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container has-text-centered">
+      <div class="columns is-centered is-multiline">
+        <div class="column is-narrow">
+          <a href="{% url 'home' %}" class="has-text-gray" style="color: rgb(95, 95, 95);">Career</a>
+        </div>
+        <div class="column is-narrow">
+          <a href="{% url 'login' %}" class="has-text-gray" style="color: rgb(95, 95, 95);">Login</a>
+        </div>
       </div>
-      <div class="column is-narrow">
-        <a href="{% url 'contact' %}" class="has-text-gray" style="color: rgb(95, 95, 95);">Contact</a>
+      <div class="content">
+        <a href="https://www.facebook.com/SFSPCA" target="_blank">
+          <img src="{% static 'images/facebook-icon.png' %}" alt="facebook-icon" style="width: 30px; height: auto; margin-right: 5px;">
+        </a>
+        <a href="https://twitter.com/sfspca" target="_blank">
+          <img src="{% static 'images/x-icon.png' %}" alt="twitter-icon" style="width: 30px; height: auto; margin-right: 5px;">
+        </a>
+        <a href="https://www.instagram.com/sanfranciscospca/" target="_blank">
+          <img src="{% static 'images/instagram-icon.png' %}" alt="instagram-icon" style="width: 30px; height: auto; margin-right: 5px;">
+        </a>
+        <a href="https://www.youtube.com/user/SanFranciscoSPCA/" target="_blank">
+          <img src="{% static 'images/youtube-icon.png' %}" alt="youtube-icon" style="width: 30px; height: auto; margin-right: 5px;">
+        </a>
+        <a href="https://www.linkedin.com/company/sfspca" target="_blank">
+          <img src="{% static 'images/linkedin-icon.png' %}" alt="linkedin-icon" style="width: 30px; height: auto;">
+        </a>
       </div>
-      <div class="column is-narrow">
-        <a href="{% url 'login' %}" class="has-text-gray" style="color: rgb(95, 95, 95);">Login</a>
+      <div class="content">
+        All Rights Reserved, &copy; {% now "Y" %} Woof and Whiskers Adoption
       </div>
     </div>
-    <div class="content">
-      All Rights Reserved, &copy; {% now "Y" %} Woof and Whiskers Adoption
-    </div>
-  </div>
-</footer>
+  </footer>
 
+  <!-- JavaScript to toggle the mobile menu -->
   <script>
-    // JavaScript to toggle the mobile menu
     document.addEventListener('DOMContentLoaded', function () {
       const navbarBurger = document.querySelector('.navbar-burger');
       const navbarMenu = document.querySelector('#navbarMenu');
@@ -107,7 +122,5 @@
     });
   </script>
 
-
-  
 </body>
 </html>

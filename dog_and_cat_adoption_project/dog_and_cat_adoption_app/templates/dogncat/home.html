@@ -1,17 +1,16 @@
 {% extends 'dogncat/base.html' %}
-
 {% load static %}
+
 {% block content %}
+
 <!-- Welcome section -->
 <section class="hero is-primary is-bold">
     <div class="hero-body">
         <div class="columns">
             <div class="columns is-vcentered">
-                <!-- Left side: Image -->
                 <div class="column is-6">
-                    <img src="{% static 'images/Cute.jpeg' %}" alt="pets">
+                    <img src="{% static 'images/home-page-header.jpeg' %}" alt="pets">
                 </div>
-                <!-- Right side: Message -->
                 <div class="column is-6">
                     <h2 class="title is-1 has-text-white bigger-text"> We love animals and give them hope. </h2>
                     <p>Are you ready to make a difference in a pet's life? Our shelter is home 
@@ -21,17 +20,17 @@
                         cuddly cat, we have a variety of wonderful pets waiting to become a 
                         part of your family. Take the first step towards a lifetime of 
                         joy and companionship by adopting a pet today!</p>
-                    <h2 class="title is-4 has-text-white"><br>Find your furry friend <a href="{% url 'index' %}" style="text-decoration: underline;">here</a></h2>
+                    <h2 class="title is-4 has-text-white">
+                        <br>Find your furry friend <a href="{% url 'index' %}" style="text-decoration: underline;">here</a></h2>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<br>
-<br>
-<br>
+
 <!-- Meet the dog & cat section -->
 <section class="hero is-bold">
+<br><br><br><br>
     <div class="container">
         <div class="columns is-vcentered">
             <div class="column">
@@ -44,26 +43,95 @@
             </div>
         </div>
     </div>
+<br><br><br><br>
 </section>
-<br>
-<br>
-<br>
+
 <!-- Adoption requirements section -->
 <section class="hero is-light">
+<br>
     <div class="container">
         <h1 class="title has-text-centered"><br><br>Adoption Requirements</h1><br>
         <h2 class="subtitle has-text-centered">Are you ready to adopt? Great! We’ve outlined everything you need to 
-        know before adopting your new best friend. Each animal at our shelter 
-        has their own story, and we want to make sure your next chapter together 
-        is filled with health, love, and friendship. We take special steps to make 
-        sure both you and your future pet are ready to find one another.<br><br>Visit our adoption center and be prepared to fall in love. Our counselors will help find the right animal for you.</h2><br><br>
+            know before adopting your new best friend. Each animal at our shelter 
+            has their own story, and we want to make sure your next chapter together 
+            is filled with health, love, and friendship. We take special steps to make 
+            sure both you and your future pet are ready to find one another.<br><br>
+            Visit our adoption center and be prepared to fall in love. Our counselors 
+            will help find the right animal for you.
+        </h2><br><br>
     </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column has-text-centered">
+                <img src="{% static 'images/homepage-id-card-requirement-icon.png' %}" alt="id-card" style="width: 150px; height: auto;">
+                <p class="subtitle has-text-centered"><br><a href="{% url 'dog_list' %}"><b>Must be at least 18 years old</b></a></p>
+            </div>
+            <div class="column has-text-centered">
+                <img src="{% static 'images/homepage-doc-requirement-icon.png' %}" alt="gov-folder" style="width: 150px; height: auto;">
+                <p class="subtitle has-text-centered"><br><a href="{% url 'cat_list' %}"><b>Bring a valid goverment-issued photo ID</b></a></p>
+            </div>
+            <div class="column has-text-centered">
+                <img src="{% static 'images/homepage-home-requirement-icon.png' %}" alt="proof-address"  style="width: 150px; height: auto;">
+                <p class="subtitle has-text-centered"><br><a href="{% url 'cat_list' %}"><b>Bring proof of address</b></a></p>
+            </div>
+        </div>
+    </div>
+<br><br><br><br>
+</section>
+
+<!-- Dog and Cat Adoption Cost section -->
+<section class="hero is-bold is-flex is-centered">
+<br><br><br>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4 is-offset-2 mr-6">
+                <p class="title">Dog Adoption Cost</p>
+                <p class="title has-text-centered" style="border-bottom: 3px solid rgb(0, 125, 121); width: 50%;"></p>
+                <p>
+                    <b style="color: rgb(0, 125, 121); font-size: 20px;">$175 Dogs</b><br><br>
+                    <b style="color: rgb(0, 125, 121); font-size: 20px;">$400 Puppies</b><br>
+                    younger than five months
+                    <br><br>
+                    <i>Take out online 
+                        <a href="https://www.sfspca.org/veterinary-care/behavior-training/" 
+                            target="_blank" 
+                            style="text-decoration: underline; color: red;">
+                            Puppy Parent Orientation
+                        </a> and pass the 
+                        <a href="https://www.sfspca.org/puppy-parent-orientation-quiz-form/" 
+                            target="_blank" 
+                            style="text-decoration: underline; color: red;">
+                            quiz
+                        </a> to receuve 50% off puppy adoption fees.
+                    </i>
+                    <br>
+                </p>
+            </div>
+            <div class="column is-4">
+                <p class="title">Cat Adoption Cost</p>
+                <p class="title" style="border-bottom: 3px solid rgb(0, 125, 121); width: 50%;"></p>
+                <p>
+                    <b style="color: rgb(0, 125, 121); font-size: 20px;">$125 Cats</b>
+                    <br>older than five months
+                    <br><br>
+                    <i>All cats seven years and older have fee-waived adoptions.</i>
+                    <br><br>
+                    <b style="color: rgb(0, 125, 121); font-size: 20px;">$200 Kittens</b>  
+                    <br>youger than five months
+                    <br>
+                    <i>Fee waived for a second kitten adopted within 30 days.</i>
+                </p>
+            </div>
+        </div>
+    </div>
+<br><br><br><br>
 </section>
 
 <section>
-    <!-- Left side: Image -->
     <div class=" is-1 is-vcentered">
-        <img src="{% static 'images/p.webp' %}" alt="pets" style="width: 100%; height: 10%; object-fit: cover;">
+        <img src="{% static 'images/homepage-footer.webp' %}" 
+        alt="pets" 
+        style="width: 100%; height: 10%; object-fit: cover;">
     </div>
 </section>
 

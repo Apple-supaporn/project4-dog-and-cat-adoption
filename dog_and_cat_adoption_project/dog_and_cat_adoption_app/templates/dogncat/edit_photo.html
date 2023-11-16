@@ -1,35 +1,36 @@
 {% extends 'dogncat/base.html' %}
 
 {% block content %}
-    <section class="section">
-        <div class="container">
-            <div class="card">
-                <p class="title">Edit '{{ pet.name }}' Photo</p>
-                <div class="card-content">
-                    <div class="content">
-                        <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ form.as_p }}
+<section class="section">
+    <div class="container">
+        <div class="card">
+            <p class="title">Edit '{{ pet.name }}' Photo</p>
+            <div class="card-content">
+                <div class="content">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
 
-                            <div class="field">
-                                <label class="label">Choose a new photo</label>
-                                <div class="control">
-                                    <input type="file" name="new_photo_file" class="input" accept="image/*">
-                                </div>
+                        <div class="field">
+                            <label class="label">Choose a new photo</label>
+                            <div class="control">
+                                <input type="file" name="new_photo_file" class="input" accept="image/*">
                             </div>
+                        </div>
 
-                            <div class="field is-grouped">
-                                <div class="control">
-                                    <button type="submit" class="button is-primary">Save changes</button>
-                                </div>
-                                <div class="control">
-                                    <a href="{% url 'detail' pet_id=pet.id %}" class="button is-link">Cancel</a>
-                                </div>
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button type="submit" class="button is-primary">Save changes</button>
                             </div>
-                        </form>
-                    </div>
+                            <div class="control">
+                                <a href="{% url 'detail' pet_id=pet.id %}" class="button is-link">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 {% endblock %}
