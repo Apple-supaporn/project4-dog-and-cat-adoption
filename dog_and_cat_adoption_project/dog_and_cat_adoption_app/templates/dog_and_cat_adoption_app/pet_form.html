@@ -6,60 +6,75 @@
     {% else %}
     <section class="section">
         <div class="container">
-            <h1 class="title">Add Pet</h1>
+            <h1 class="title">Add a Pet</h1>
     {% endif %}
-            <!-- Leaving the action empty makes the form post to the same url used to display it -->
+            <!-- Leaving the action empty makes the form post to the same URL used to display it -->
             <form action="{% if object %}{% url 'pets_update' object.id %}{% else %}{% url 'pets_create' %}{% endif %}" method="POST" class="box" enctype="multipart/form-data">
                 <!-- Django requires the following for security purposes -->
                 {% csrf_token %}
-                <div class="field">
-                    <label class="label">Pet Type</label>
-                    <div class="control">
-                        {{ form.pet_type }}
+                
+                <div class="columns">
+                    <div class="column is-4">
+                        <div class="field">
+                            <label class="label">Pet Type</label>
+                            <div class="control">
+                                {{ form.pet_type }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Name</label>
+                            <div class="control">
+                                {{ form.name }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Age</label>
+                            <div class="control">
+                                {{ form.age }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="field">
+                            <label class="label">Weight</label>
+                            <div class="control">
+                                {{ form.weight }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Gender</label>
+                            <div class="control">
+                                {{ form.gender }}
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Breed</label>
+                            <div class="control">
+                                {{ form.breed }}
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="field">
-                    <label class="label">Name</label>
-                    <div class="control">
-                        {{ form.name }}
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Age</label>
-                    <div class="control">
-                        {{ form.age }}
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Weight</label>
-                    <div class="control">
-                        {{ form.weight }}
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Gender</label>
-                    <div class="control">
-                        {{ form.gender }}
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Breed</label>
-                    <div class="control">
-                        {{ form.breed }}
-                    </div>
-                </div>
+
                 <div class="field">
                     <label class="label">Adoption Status</label>
                     <div class="control">
                         {{ form.adoption_status }}
                     </div>
                 </div>
+
                 <div class="field">
                     <label class="label">Description</label>
                     <div class="control">
-                        {{ form.description }}
+                        {{ form.description|safe }}
                     </div>
                 </div>
+
                 <br>
                 <div class="field is-grouped">
                     <div class="control">
@@ -73,5 +88,4 @@
             </form>
         </div>
     </section>
-    
 {% endblock %}

@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Pet, Photo
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django import forms
+
 
 ## imports for photo aws
 import uuid
@@ -107,6 +109,65 @@ def add_photo(request, pet_id):
             return HttpResponse(status=500)
         return redirect('detail', pet_id=pet_id)
 
+### ADD FOR EDIT PHOTO ###
+def edit_photo(request, pet_id, photo_id):
+    pet = get_object_or_404(Pet, id=pet_id)
+    photo = get_object_or_404(Photo, id=photo_id)
+
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES, instance=photo)
+        new_photo_file = request.FILES.get('new_photo_file')
+
+        if form.is_valid():
+            if new_photo_file:
+                # Save the new photo file to AWS S3 and update the photo URL
+                s3 = boto3.client('s3')
+                key = f"{pet_id}/{uuid.uuid4().hex[:6]}_{new_photo_file.name}"
+                
+                try:
+                    bucket = os.environ['S3_BUCKET']
+                    s3.upload_fileobj(new_photo_file, bucket, key)
+                    url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+                    
+                    # Update the photo URL
+                    photo.url = url
+                    photo.save()
+                    
+                except Exception as e:
+                    # Handle the exception (log or return an error response)
+                    print(f"An error occurred uploading the new photo to S3: {e}")
+                    
+            form.save()
+
+            return redirect('detail', pet_id=pet.id)
+    else:
+        form = PhotoForm(instance=photo)
+
+    return render(request, 'dogncat/edit_photo.html', {'form': form, 'pet': pet})
+### END FOR EDIT PHOTO ###
+
+### ADD DELETE PHOTO ###
+def delete_photo(request, pet_id, photo_id):
+    photo = get_object_or_404(Photo, id=photo_id)
+
+    if request.method == 'POST':
+        # Delete the photo from AWS S3
+        s3 = boto3.client('s3')
+        try:
+            bucket = os.environ['S3_BUCKET']
+            key = photo.url.split('/')[-1]  # Extract the key from URL
+            s3.delete_object(Bucket=bucket, Key=key)
+        except Exception as e:
+            print(f"An error occurred deleting the photo from S3: {e}")
+
+        # Delete the photo from the database
+        photo.delete()
+
+        return redirect('detail', pet_id=pet_id)
+
+    return render(request, 'dog_and_cat_adoption_app/photo_confirm_delete.html', {'photo': photo})
+### END DELETE PHOTO ###
+
 
 
 # CLASS BASED VIEWS
@@ -133,3 +194,10 @@ class PetUpdate(UpdateView):
 class PetDelete(DeleteView):
     model = Pet
     success_url = '/pets/'
+
+
+
+class PhotoForm(forms.ModelForm):
+    class Meta:
+        model = Photo
+        fields = ['url']

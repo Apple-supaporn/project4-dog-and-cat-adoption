@@ -6,10 +6,32 @@
         <div class="card">
             <div class="card-content">
                 
+                <!-- <div class="columns is-multiline">
+                    {% for photo in pet.photo_set.all %}
+                        <div class="column is-one-third">
+                            <img class="responsive-img card-panel" src="{{photo.url}}" alt="pet">
+                        </div>
+                    {% empty %}
+                        <div class="card-panel teal-text center-align">
+                            No Photos Uploaded
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'add_photo' pet.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+                        {% csrf_token %}
+                        <input type="file" name="photo-file"><br><br>
+                        <button type="submit" class="btn">Upload Photo</button>
+                    </form>
+                {% endif %} -->
                 <div class="columns is-multiline">
                     {% for photo in pet.photo_set.all %}
                         <div class="column is-one-third">
                             <img class="responsive-img card-panel" src="{{photo.url}}" alt="pet">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'edit_photo' pet.id photo.id %}" class="button is-primary is-small">Edit Photo</a>
+                                <a href="{% url 'delete_photo' pet.id photo.id %}" class="button is-danger is-small">Delete Photo</a>
+                            {% endif %}
                         </div>
                     {% empty %}
                         <div class="card-panel teal-text center-align">
@@ -25,6 +47,10 @@
                         <button type="submit" class="btn">Upload Photo</button>
                     </form>
                 {% endif %}
+
+
+
+
             </div>
 
             <div class="card-content">
@@ -44,8 +70,8 @@
                 {% if user.is_authenticated %}
                     <div class="class-action">
                         <br>
-                        <a href="{% url 'pets_update' pet.id %}" class="button is-primary">Edit</a>
-                        <a href="{% url 'pets_delete' pet.id %}" class="button is-danger">Delete</a>
+                        <a href="{% url 'pets_update' pet.id %}" class="button is-primary is-small">Edit</a>
+                        <a href="{% url 'pets_delete' pet.id %}" class="button is-danger is-small">Delete</a>
                     </div>
                 {% endif %}
                 <br><br>
