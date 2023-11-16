@@ -4,79 +4,67 @@
 {% block content %}
 <!-- Welcome section -->
 <section class="hero is-primary is-bold">
-  <div class="hero-body">
-      <div class="columns">
-        <div class="columns is-vcentered">
-        <!-- Left side: Image -->
-        <div class="column is-6">
-          <img src="{% static 'images/Cute.jpeg' %}" alt="pets" class="big-photo" style="width: 100%; height: 100%; object-fit: cover;">
+    <div class="hero-body">
+        <div class="columns">
+            <div class="columns is-vcentered">
+                <!-- Left side: Image -->
+                <div class="column is-6">
+                    <img src="{% static 'images/Cute.jpeg' %}" alt="pets">
+                </div>
+                <!-- Right side: Message -->
+                <div class="column is-6">
+                    <h2 class="title is-1 has-text-white bigger-text"> We love animals and give them hope. </h2>
+                    <p>Are you ready to make a difference in a pet's life? Our shelter is home 
+                        to a diverse group of lovable dogs and cats, each with their own unique 
+                        story and personality. Browse through our adoption listings to discover 
+                        your perfect companion. Whether you're looking for a playful pup or a 
+                        cuddly cat, we have a variety of wonderful pets waiting to become a 
+                        part of your family. Take the first step towards a lifetime of 
+                        joy and companionship by adopting a pet today!</p>
+                    <h2 class="title is-4 has-text-white"><br>Find your furry friend <a href="{% url 'index' %}" style="text-decoration: underline;">here</a></h2>
+                </div>
+            </div>
         </div>
-          <!-- Right side: Message -->
-        <div class="column is-4 is-offset-1">
-          <h2 class="title is-1 has-text-white bigger-text"> We love animals and give them hope. </h2>
-          <p>Are you ready to make a difference in a pet's life? Our shelter is home 
-            to a diverse group of lovable dogs and cats, each with their own unique 
-            story and personality. Browse through our adoption listings to discover 
-            your perfect companion. Whether you're looking for a playful pup or a 
-            cuddly cat, we have a variety of wonderful pets waiting to become a 
-            part of your family. Take the first step towards a lifetime of 
-            joy and companionship by adopting a pet today!</p>
-          <h2 class="title is-4 has-text-white"><br>Find your furry friend <a href="{% url 'index' %}" style="text-decoration: underline;">here</a></h2>
-        </div>
-      </div>
-  </div>
+    </div>
 </section>
 <br>
 <br>
 <br>
-
 <!-- Meet the dog & cat section -->
 <section class="hero is-bold">
-  <div class="container">
-    <div class="columns is-vcentered">
-      <div class="column">
-        <img src="{% static 'images/meet-the-dog.jpeg' %}" alt="Dog" class="pet-photo round-image" style="border-radius: 50%; width: 400px; height: 400px;">
-        <p class="has-text-centered title is-2"><br><a href="{% url 'dog_list' %}" style="color: rgb(95, 95, 95);">Meet the Dogs</a></p>
-      </div>
-      <div class="column">
-        <img src="{% static 'images/meet-the-cat.jpeg' %}" alt="Cat" class="pet-photo round-image" style="border-radius: 50%; width: 400px; height: 400px;">
-        <p class="has-text-centered title is-2"><br><a href="{% url 'cat_list' %}" style="color: rgb(95, 95, 95);"> Meet the Cats</a></p>
-      </div>
+    <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column">
+                <img src="{% static 'images/meet-the-dog.jpeg' %}" alt="Dog" class="pet-photo round-image" style="border-radius: 50%; width: 400px; height: 400px;">
+                <p class="has-text-centered title is-2"><br><a href="{% url 'dog_list' %}" style="color: rgb(95, 95, 95);">Meet the Dogs</a></p>
+            </div>
+            <div class="column">
+                <img src="{% static 'images/meet-the-cat.jpeg' %}" alt="Cat" class="pet-photo round-image" style="border-radius: 50%; width: 400px; height: 400px;">
+                <p class="has-text-centered title is-2"><br><a href="{% url 'cat_list' %}" style="color: rgb(95, 95, 95);"> Meet the Cats</a></p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 <br>
 <br>
 <br>
-
 <!-- Adoption requirements section -->
 <section class="hero is-light">
-  <div class="container">
-
-<h1 class="title has-text-centered"><br><br>Adoption Requirements</h1><br>
-
-<h2 class="subtitle has-text-centered">Are you ready to adopt? Great! We’ve outlined everything you need to 
-  know before adopting your new best friend. Each animal at our shelter 
-  has their own story, and we want to make sure your next chapter together 
-  is filled with health, love, and friendship. We take special steps to make 
-  sure both you and your future pet are ready to find one another.<br><br>Visit our adoption center and be prepared to fall in love. Our counselors will help find the right animal for you.</h2><br><br>
-
-  </div>
+    <div class="container">
+        <h1 class="title has-text-centered"><br><br>Adoption Requirements</h1><br>
+        <h2 class="subtitle has-text-centered">Are you ready to adopt? Great! We’ve outlined everything you need to 
+        know before adopting your new best friend. Each animal at our shelter 
+        has their own story, and we want to make sure your next chapter together 
+        is filled with health, love, and friendship. We take special steps to make 
+        sure both you and your future pet are ready to find one another.<br><br>Visit our adoption center and be prepared to fall in love. Our counselors will help find the right animal for you.</h2><br><br>
+    </div>
 </section>
 
-
 <section>
-
-
-
-        <!-- Left side: Image -->
-        <div class=" is-1 is-vcentered">
-          <img src="{% static 'images/p.webp' %}" alt="pets" style="width: 100%; height: 10%; object-fit: cover;">
-        </div>
-
-
-
-
+    <!-- Left side: Image -->
+    <div class=" is-1 is-vcentered">
+        <img src="{% static 'images/p.webp' %}" alt="pets" style="width: 100%; height: 10%; object-fit: cover;">
+    </div>
 </section>
 
 
