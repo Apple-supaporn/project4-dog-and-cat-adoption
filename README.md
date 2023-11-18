@@ -1,5 +1,5 @@
 # [Woof and Whiskers Adoption](https://dogandcat-adoption-c23fc9844c3a.herokuapp.com/)
-Woof and Whiskers Adoption is a platform that provides full CRUD functionality. Users can read, while administrators have the ability to read, create, update, and delete data. I utilize AWS for photo management and Heroku's PostgreSQL for secure data storage. 
+Woof and Whiskers Adoption is a platform for pet adoption, targeting users interested in adopting either dogs, cats, or both. The unique feature of this platform is its admin site, where administrators can create, update, and delete pet data. The platform offers full CRUD functionality, allowing users to read, while administrators have the ability to read, create, update, and delete data. I utilize AWS for photo management and Heroku's PostgreSQL for secure data storage.
 
 ## Technologies Used
 - Python
