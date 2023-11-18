@@ -53,16 +53,16 @@ http://localhost:8000/admin/ and log in.
 
 ## Screenshots
 #### Landing Page
-![Landing Page](static/images/screenshot-1.png)
+![Landing Page](dog_and_cat_adoption_app/static/images/screenshot-1.png)
 
 #### Adoption Page
-![Menu Page](static/images/screenshot-2.png)
+![Menu Page](dog_and_cat_adoption_app/static/images/screenshot-2.png)
 
 #### Add a Pet Page
-![Create a New Menu Page](static/images/screenshot-3.png)
+![Create a New Menu Page](dog_and_cat_adoption_app/static/images/screenshot-3.png)
 
 #### Pet Details Page
-![Create a New Menu Page](static/images/screenshot-4.png)
+![Create a New Menu Page](dog_and_cat_adoption_app/static/images/screenshot-4.png)
 
 
 ## Future Features
