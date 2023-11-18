@@ -51,6 +51,20 @@ The site should be accessible at http://localhost:8000/ by default.
 http://localhost:8000/admin/ and log in.
 
 
+## Screenshots
+#### Landing Page
+![Landing Page](static/images/screenshot-1.png)
+
+#### Adoption Page
+![Menu Page](static/images/screenshot-2.png)
+
+#### Add a Pet Page
+![Create a New Menu Page](static/images/screenshot-3.png)
+
+#### Pet Details Page
+![Create a New Menu Page](static/images/screenshot-4.png)
+
+
 ## Future Features
 - As a visitor, I want to be able to inquire about adopting a pet by filling out a contact form.
 - As an administrator, I want to review and approve adoption applications submitted by visitor.
